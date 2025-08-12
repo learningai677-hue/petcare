@@ -210,7 +210,7 @@ export default function Chatbot() {
         {/* Attribution */}
         <div className="mt-16 text-center">
           <div className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg inline-block shadow-lg">
-            <p className="text-lg font-bold font-serif tracking-wide">
+            <p className="text-lg font-bold font-sans tracking-wide">
               Made by Tanishka Badhai and Jiya Kataria
             </p>
           </div>
