@@ -7,13 +7,13 @@ export const handleChat: RequestHandler = async (req, res) => {
       return res.status(400).json({ error: "No message provided" });
     }
 
-    const OPENROUTER_API_KEY =
-      process.env.OPENROUTER_API_KEY;
+    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
     if (!OPENROUTER_API_KEY) {
       // Provide a helpful fallback response when API key is not configured
       return res.json({
-        reply: "Hello! I'm your Pet Care Assistant 🐾\n\nI'd love to help you with pet care questions, but I need an OpenRouter API key to be configured first.\n\nTo set this up:\n1. Sign up at https://openrouter.ai\n2. Get your free API key\n3. Set the OPENROUTER_API_KEY environment variable\n\nIn the meantime, here are some general pet care tips:\n• Ensure fresh water is always available\n• Feed age-appropriate, high-quality food\n• Regular vet checkups are essential\n• Daily exercise keeps pets healthy and happy\n• Show lots of love and attention! ❤️",
+        reply:
+          "Hello! I'm your Pet Care Assistant 🐾\n\nI'd love to help you with pet care questions, but I need an OpenRouter API key to be configured first.\n\nTo set this up:\n1. Sign up at https://openrouter.ai\n2. Get your free API key\n3. Set the OPENROUTER_API_KEY environment variable\n\nIn the meantime, here are some general pet care tips:\n• Ensure fresh water is always available\n• Feed age-appropriate, high-quality food\n• Regular vet checkups are essential\n• Daily exercise keeps pets healthy and happy\n• Show lots of love and attention! ❤️",
       });
     }
 
