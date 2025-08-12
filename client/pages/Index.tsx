@@ -119,7 +119,27 @@ export default function Index() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Floating Animals */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="animate-float">
+            <img
+              src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg"
+              alt="Golden retriever"
+              className="absolute top-32 right-20 w-24 h-36 object-cover opacity-15 rounded-xl shadow-lg"
+              style={{ animationDelay: '0s' }}
+            />
+          </div>
+          <div className="animate-float">
+            <img
+              src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
+              alt="Cute cat"
+              className="absolute top-96 left-16 w-20 h-30 object-cover opacity-12 rounded-lg shadow-lg"
+              style={{ animationDelay: '1.5s' }}
+            />
+          </div>
+        </div>
+
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Link key={index} to={feature.href} className="group">
               <Card className="h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
