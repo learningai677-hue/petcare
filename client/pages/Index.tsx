@@ -1,200 +1,201 @@
 import { Link } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Layout from "@/components/Layout";
 
 export default function Index() {
-  const features = [
+  const quickStats = [
     {
-      title: "🗓️ Reminder Assistant",
-      description: "Set and manage feeding, walking, and vet visit reminders for your pets.",
-      image: "https://cdn-icons-png.flaticon.com/512/3595/3595450.png",
-      href: "/reminders",
-      gradient: "from-emerald-400 to-cyan-400"
+      title: "Active Pets",
+      value: "3",
+      change: "+1 this month",
+      icon: "🐕",
+      color: "from-blue-500 to-purple-600"
     },
     {
-      title: "🐕 Pet Profiles",
-      description: "Create & manage profiles with photos & details.",
-      image: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-      href: "/profiles",
-      gradient: "from-purple-400 to-pink-400"
+      title: "Upcoming Reminders",
+      value: "8",
+      change: "Next: Feed Buddy",
+      icon: "⏰",
+      color: "from-emerald-500 to-cyan-600"
     },
     {
-      title: "💬 Pet Care Bot",
-      description: "Get instant answers to your pet care questions anytime, anywhere.",
-      image: "https://cdn-icons-png.flaticon.com/512/2044/2044552.png",
-      href: "/chatbot",
-      gradient: "from-blue-400 to-indigo-400"
+      title: "This Month's Expenses",
+      value: "$324",
+      change: "-12% from last month",
+      icon: "💰",
+      color: "from-rose-500 to-pink-600"
     },
     {
-      title: "📸 Photo Journal",
-      description: "Upload daily pics, track your pet's growth and funny moments.",
-      image: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png",
-      href: "/photo-journal",
-      gradient: "from-yellow-400 to-orange-400"
-    },
-    {
-      title: "🤝 Delegate Pet Care",
-      description: "Allow someone else to view & take care of your pet reminders.",
-      image: "https://cdn-icons-png.flaticon.com/512/709/709496.png",
-      href: "/delegate",
-      gradient: "from-rose-400 to-red-400"
+      title: "Training Sessions",
+      value: "15",
+      change: "+5 this week",
+      icon: "🎓",
+      color: "from-yellow-500 to-orange-600"
     }
   ];
 
+  const recentActivities = [
+    { type: "reminder", text: "Fed Buddy - Morning meal", time: "2 hours ago", icon: "🍽️" },
+    { type: "exercise", text: "Walked Luna for 30 minutes", time: "5 hours ago", icon: "🚶" },
+    { type: "photo", text: "Added new photo of Whiskers", time: "1 day ago", icon: "📸" },
+    { type: "vet", text: "Scheduled vet appointment for Max", time: "2 days ago", icon: "🏥" },
+    { type: "training", text: "Buddy learned 'high-five' command", time: "3 days ago", icon: "🎾" }
+  ];
+
+  const upcomingEvents = [
+    { event: "Vet Appointment - Luna", date: "Tomorrow, 2:00 PM", icon: "🏥", urgent: true },
+    { event: "Grooming - Buddy", date: "Dec 28, 10:00 AM", icon: "✂️", urgent: false },
+    { event: "Training Session - Max", date: "Dec 30, 4:00 PM", icon: "🎓", urgent: false },
+    { event: "Vaccination Due - Whiskers", date: "Jan 5, 2024", icon: "💉", urgent: true }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Background Animals */}
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg"
-            alt="Happy pets playing"
-            className="absolute top-0 right-0 w-80 h-60 object-cover opacity-15 rounded-bl-3xl"
+    <Layout>
+      {/* Background Animals */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <img 
+          src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg" 
+          alt="Happy dogs"
+          className="absolute top-0 right-0 w-96 h-64 object-cover opacity-5 rounded-bl-3xl"
+        />
+        <img 
+          src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg" 
+          alt="Golden retriever"
+          className="absolute bottom-0 left-72 w-80 h-80 object-cover opacity-3 rounded-tr-3xl"
+        />
+        <div className="animate-float">
+          <img 
+            src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg" 
+            alt="Cute kitten"
+            className="absolute top-1/3 right-1/4 w-32 h-48 object-cover opacity-8 rounded-2xl transform rotate-12"
+            style={{ animationDelay: '2s' }}
           />
-          <img
-            src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg"
-            alt="Golden retriever"
-            className="absolute bottom-0 left-0 w-64 h-64 object-cover opacity-10 rounded-tr-3xl"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 blur-xl opacity-30 animate-pulse" />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
-                  alt="Pet Care"
-                  className="relative w-24 h-24 mx-auto drop-shadow-2xl"
-                />
-              </div>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-              🐾 Pet Care Assistant
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Your all-in-one companion for managing your furry friend's health, happiness, and daily care needs
-            </p>
-            <div className="flex justify-center space-x-4">
-              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3">
-                Get Started
-              </Button>
-              <Button variant="outline" size="lg" className="px-8 py-3">
-                Learn More
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Features Grid */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        {/* Background Animals for Features Section */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          <img
-            src="https://images.pexels.com/photos/35638/labrador-breed-dogs-animal.jpg"
-            alt="Labrador dogs in nature"
-            className="absolute top-20 right-10 w-48 h-32 object-cover opacity-20 rounded-2xl transform rotate-12 shadow-lg"
-          />
-          <img
-            src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
-            alt="Cute kitten"
-            className="absolute bottom-20 left-10 w-40 h-60 object-cover opacity-25 rounded-2xl transform -rotate-12 shadow-lg"
-          />
-          <img
-            src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg"
-            alt="Pug portrait"
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 object-cover opacity-15 rounded-full shadow-lg"
-          />
+      <div className="relative z-10 p-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            Welcome back! 👋
+          </h1>
+          <p className="text-gray-600 text-lg">Here's what's happening with your pets today</p>
         </div>
 
-        <div className="relative text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Everything Your Pet Needs
-          </h2>
-          <p className="text-lg text-gray-600">
-            Comprehensive tools to keep your pet healthy and happy
-          </p>
-        </div>
-
-        {/* Floating Animals */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          <div className="animate-float">
-            <img
-              src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg"
-              alt="Golden retriever"
-              className="absolute top-32 right-20 w-24 h-36 object-cover opacity-25 rounded-xl shadow-lg"
-              style={{ animationDelay: '0s' }}
-            />
-          </div>
-          <div className="animate-float">
-            <img
-              src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
-              alt="Cute cat"
-              className="absolute top-96 left-16 w-20 h-30 object-cover opacity-20 rounded-lg shadow-lg"
-              style={{ animationDelay: '1.5s' }}
-            />
-          </div>
-        </div>
-
-        <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <Link key={index} to={feature.href} className="group">
-              <Card className="h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
-                <div className={`h-2 bg-gradient-to-r ${feature.gradient}`} />
-                <CardContent className="p-6 text-center">
-                  <div className="relative mb-6">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} blur-lg opacity-20 rounded-full`} />
-                    <div className="relative w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg">
-                      <img
-                        src={feature.image}
-                        alt={feature.title}
-                        className="w-12 h-12 object-contain"
-                      />
-                    </div>
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {quickStats.map((stat, index) => (
+            <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
+                    <span className="text-white text-xl">{stat.icon}</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                  <div className="mt-4">
-                    <Button variant="ghost" className="group-hover:bg-blue-50 group-hover:text-blue-600">
-                      Explore →
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600 mb-1">{stat.title}</p>
+                  <p className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
+                  <p className="text-xs text-gray-500">{stat.change}</p>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 overflow-hidden">
-        {/* Background Animals for CTA */}
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg"
-            alt="Happy woman with dogs"
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-10"
-          />
-        </div>
-        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Give Your Pet the Best Care?
-          </h2>
-          <p className="text-xl opacity-90 mb-8">
-            Join thousands of pet owners who trust our platform for their pet's well-being
-          </p>
-          <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3">
-            Start Your Journey
-          </Button>
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          {/* Recent Activities */}
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span className="text-blue-600">📊</span>
+                Recent Activities
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recentActivities.map((activity, index) => (
+                  <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-sm">{activity.icon}</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-900">{activity.text}</p>
+                      <p className="text-xs text-gray-500">{activity.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Upcoming Events */}
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span className="text-orange-600">📅</span>
+                Upcoming Events
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {upcomingEvents.map((event, index) => (
+                  <div key={index} className={`p-3 rounded-lg border-l-4 ${event.urgent ? 'border-l-red-400 bg-red-50' : 'border-l-blue-400 bg-blue-50'}`}>
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg">{event.icon}</span>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-gray-900">{event.event}</p>
+                        <p className="text-xs text-gray-600">{event.date}</p>
+                      </div>
+                      {event.urgent && (
+                        <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Urgent</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Quick Actions */}
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span className="text-green-600">⚡</span>
+                Quick Actions
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-3">
+                <Button asChild className="h-20 flex-col gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                  <Link to="/reminders">
+                    <span className="text-lg">⏰</span>
+                    <span className="text-xs">Add Reminder</span>
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-20 flex-col gap-2 hover:bg-purple-50">
+                  <Link to="/photo-journal">
+                    <span className="text-lg">📸</span>
+                    <span className="text-xs">Add Photo</span>
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-20 flex-col gap-2 hover:bg-green-50">
+                  <Link to="/exercise">
+                    <span className="text-lg">🏃</span>
+                    <span className="text-xs">Log Exercise</span>
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="h-20 flex-col gap-2 hover:bg-yellow-50">
+                  <Link to="/chatbot">
+                    <span className="text-lg">🤖</span>
+                    <span className="text-xs">Ask AI</span>
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
