@@ -51,7 +51,11 @@ const App = () => (
 
 // Ensure root is only created once
 const rootElement = document.getElementById("root")!;
-if (!rootElement._reactRoot) {
-  rootElement._reactRoot = createRoot(rootElement);
+let root = (rootElement as any).__reactRoot;
+
+if (!root) {
+  root = createRoot(rootElement);
+  (rootElement as any).__reactRoot = root;
 }
-rootElement._reactRoot.render(<App />);
+
+root.render(<App />);
