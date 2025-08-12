@@ -234,6 +234,11 @@ export default function Medical() {
             </CardContent>
           </Card>
         )}
+
+        {/* Attribution */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 text-sm">Made by Tanishka Badhai and Jiya Kataria</p>
+        </div>
       </div>
     </Layout>
   );
