@@ -17,78 +17,6 @@ interface Expense {
   notes: string;
 }
 
-// 3D Money and Pet Items
-function MoneyVisualization({ expenses }: { expenses: Expense[] }) {
-  const categories = expenses.reduce((acc, expense) => {
-    acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
-    return acc;
-  }, {} as Record<string, number>);
-
-  const categoryPositions = [
-    [-3, 2, 0], [0, 2, 0], [3, 2, 0],
-    [-3, 0, 0], [0, 0, 0], [3, 0, 0],
-    [-3, -2, 0], [0, -2, 0], [3, -2, 0]
-  ];
-
-  const categoryColors = {
-    food: '#FF6B6B',
-    medical: '#4ECDC4',
-    grooming: '#45B7D1',
-    toys: '#96CEB4',
-    accessories: '#FFEAA7',
-    training: '#DDA0DD',
-    boarding: '#98D8C8',
-    other: '#F7DC6F'
-  };
-
-  return (
-    <group>
-      {Object.entries(categories).map(([category, amount], index) => (
-        <Float
-          key={category}
-          speed={1 + Math.random()}
-          rotationIntensity={0.3}
-          floatIntensity={0.5}
-          position={categoryPositions[index] || [0, 0, 0]}
-        >
-          <group>
-            {/* Money stack representing amount */}
-            <mesh>
-              <cylinderGeometry args={[0.3, 0.3, Math.min(amount / 50, 2)]} />
-              <meshPhongMaterial color={categoryColors[category as keyof typeof categoryColors]} />
-            </mesh>
-
-            {/* Category indicator sphere */}
-            <mesh position={[0, Math.min(amount / 50, 2) / 2 + 0.3, 0]}>
-              <sphereGeometry args={[0.15]} />
-              <meshPhongMaterial color="#2C3E50" />
-            </mesh>
-          </group>
-        </Float>
-      ))}
-
-      {/* Floating dollar coin shapes */}
-      {[...Array(6)].map((_, i) => (
-        <Float
-          key={`dollar-${i}`}
-          speed={0.8 + Math.random() * 0.4}
-          rotationIntensity={0.2}
-          floatIntensity={1}
-          position={[
-            (Math.random() - 0.5) * 8,
-            (Math.random() - 0.5) * 4,
-            (Math.random() - 0.5) * 4
-          ]}
-        >
-          <mesh>
-            <cylinderGeometry args={[0.1, 0.1, 0.05]} />
-            <meshPhongMaterial color="#32CD32" transparent opacity={0.7} />
-          </mesh>
-        </Float>
-      ))}
-    </group>
-  );
-}
 
 export default function Expenses() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -297,7 +225,7 @@ export default function Expenses() {
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="food">🍽�� Food</SelectItem>
+                    <SelectItem value="food">🍽️ Food</SelectItem>
                     <SelectItem value="medical">🏥 Medical</SelectItem>
                     <SelectItem value="grooming">✂️ Grooming</SelectItem>
                     <SelectItem value="toys">🎾 Toys</SelectItem>
