@@ -3,12 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float, Sphere } from "@react-three/drei";
-import * as THREE from "three";
 
 interface GroomingSession {
   id: string;
