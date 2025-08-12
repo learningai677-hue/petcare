@@ -302,7 +302,11 @@ export default function Expenses() {
 
         {/* Attribution */}
         <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm">Made by Tanishka Badhai and Jiya Kataria</p>
+          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg inline-block shadow-lg">
+            <p className="text-lg font-bold font-serif tracking-wide">
+              Made by Tanishka Badhai and Jiya Kataria
+            </p>
+          </div>
         </div>
       </div>
     </Layout>
