@@ -47,7 +47,7 @@ function MoneyVisualization({ expenses }: { expenses: Expense[] }) {
   return (
     <group>
       {Object.entries(categories).map(([category, amount], index) => (
-        <Float 
+        <Float
           key={category}
           speed={1 + Math.random()}
           rotationIntensity={0.3}
@@ -60,24 +60,17 @@ function MoneyVisualization({ expenses }: { expenses: Expense[] }) {
               <cylinderGeometry args={[0.3, 0.3, Math.min(amount / 50, 2)]} />
               <meshPhongMaterial color={categoryColors[category as keyof typeof categoryColors]} />
             </mesh>
-            
-            {/* Category icon */}
-            <Center position={[0, Math.min(amount / 50, 2) / 2 + 0.3, 0]}>
-              <Text3D
-                font="/fonts/helvetiker_regular.typeface.json"
-                size={0.15}
-                height={0.05}
-                curveSegments={8}
-              >
-                {category}
-                <meshPhongMaterial color="#2C3E50" />
-              </Text3D>
-            </Center>
+
+            {/* Category indicator sphere */}
+            <mesh position={[0, Math.min(amount / 50, 2) / 2 + 0.3, 0]}>
+              <sphereGeometry args={[0.15]} />
+              <meshPhongMaterial color="#2C3E50" />
+            </mesh>
           </group>
         </Float>
       ))}
-      
-      {/* Floating dollar signs */}
+
+      {/* Floating dollar coin shapes */}
       {[...Array(6)].map((_, i) => (
         <Float
           key={`dollar-${i}`}
@@ -90,17 +83,10 @@ function MoneyVisualization({ expenses }: { expenses: Expense[] }) {
             (Math.random() - 0.5) * 4
           ]}
         >
-          <Center>
-            <Text3D
-              font="/fonts/helvetiker_regular.typeface.json"
-              size={0.2}
-              height={0.05}
-              curveSegments={8}
-            >
-              $
-              <meshPhongMaterial color="#32CD32" transparent opacity={0.7} />
-            </Text3D>
-          </Center>
+          <mesh>
+            <cylinderGeometry args={[0.1, 0.1, 0.05]} />
+            <meshPhongMaterial color="#32CD32" transparent opacity={0.7} />
+          </mesh>
         </Float>
       ))}
     </group>
@@ -184,7 +170,7 @@ export default function Expenses() {
     accessories: '🦴',
     training: '🎓',
     boarding: '🏠',
-    other: '💼'
+    other: '����'
   };
 
   const handleSubmit = (e: React.FormEvent) => {
