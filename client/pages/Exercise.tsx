@@ -139,25 +139,6 @@ export default function Exercise() {
           </p>
         </div>
 
-        {/* 3D Visualization */}
-        <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl mb-8 h-64">
-          <CardHeader>
-            <CardTitle className="text-center">3D Exercise Overview</CardTitle>
-          </CardHeader>
-          <CardContent className="h-48">
-            <ErrorBoundary>
-              <Suspense fallback={<div className="text-center py-8">Loading 3D scene...</div>}>
-                <Canvas camera={{ position: [0, 2, 5], fov: 50 }}>
-                  <ambientLight intensity={0.6} />
-                  <directionalLight position={[5, 5, 5]} intensity={0.8} />
-                  <AnimatedDog />
-                  <ExerciseStats3D totalMinutes={totalMinutes} totalDistance={Math.round(totalDistance * 10) / 10} />
-                  <OrbitControls enableZoom={false} enablePan={false} />
-                </Canvas>
-              </Suspense>
-            </ErrorBoundary>
-          </CardContent>
-        </Card>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
