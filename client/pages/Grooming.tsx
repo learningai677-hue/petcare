@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState, useEffect, Suspense } from "react";
 import Layout from "@/components/Layout";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, Sphere } from "@react-three/drei";
 import * as THREE from "three";
@@ -255,16 +256,18 @@ export default function Grooming() {
             <CardTitle className="text-center">3D Grooming Studio</CardTitle>
           </CardHeader>
           <CardContent className="h-48">
-            <Suspense fallback={<div className="text-center py-8">Loading 3D grooming tools...</div>}>
-              <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
-                <ambientLight intensity={0.6} />
-                <directionalLight position={[5, 5, 5]} intensity={0.8} />
-                <pointLight position={[-5, 5, 5]} intensity={0.4} color="#FFB6C1" />
-                <GroomingTools3D />
-                <GroomingStats3D totalSessions={totalSessions} totalCost={totalCost} />
-                <OrbitControls enableZoom={false} enablePan={false} />
-              </Canvas>
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div className="text-center py-8">Loading 3D grooming tools...</div>}>
+                <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
+                  <ambientLight intensity={0.6} />
+                  <directionalLight position={[5, 5, 5]} intensity={0.8} />
+                  <pointLight position={[-5, 5, 5]} intensity={0.4} color="#FFB6C1" />
+                  <GroomingTools3D />
+                  <GroomingStats3D totalSessions={totalSessions} totalCost={totalCost} />
+                  <OrbitControls enableZoom={false} enablePan={false} />
+                </Canvas>
+              </Suspense>
+            </ErrorBoundary>
           </CardContent>
         </Card>
 
