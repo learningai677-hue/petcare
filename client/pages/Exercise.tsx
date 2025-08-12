@@ -82,29 +82,29 @@ function AnimatedDog() {
 function ExerciseStats3D({ totalMinutes, totalDistance }: { totalMinutes: number; totalDistance: number }) {
   return (
     <group>
-      <Center position={[-2, 0, 0]}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.3}
-          height={0.1}
-          curveSegments={12}
-        >
-          {`${totalMinutes}m`}
+      {/* Minutes indicator */}
+      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3} position={[-2, 0, 0]}>
+        <mesh>
+          <cylinderGeometry args={[0.5, 0.5, Math.min(totalMinutes / 10, 3)]} />
           <meshPhongMaterial color="#3B82F6" />
-        </Text3D>
-      </Center>
-      
-      <Center position={[2, 0, 0]}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.3}
-          height={0.1}
-          curveSegments={12}
-        >
-          {`${totalDistance}mi`}
+        </mesh>
+        <mesh position={[0, Math.min(totalMinutes / 10, 3) / 2 + 0.3, 0]}>
+          <sphereGeometry args={[0.2]} />
+          <meshPhongMaterial color="#1E40AF" />
+        </mesh>
+      </Float>
+
+      {/* Distance indicator */}
+      <Float speed={1.8} rotationIntensity={0.2} floatIntensity={0.4} position={[2, 0, 0]}>
+        <mesh>
+          <cylinderGeometry args={[0.5, 0.5, Math.min(totalDistance / 2, 3)]} />
           <meshPhongMaterial color="#10B981" />
-        </Text3D>
-      </Center>
+        </mesh>
+        <mesh position={[0, Math.min(totalDistance / 2, 3) / 2 + 0.3, 0]}>
+          <sphereGeometry args={[0.2]} />
+          <meshPhongMaterial color="#047857" />
+        </mesh>
+      </Float>
     </group>
   );
 }
