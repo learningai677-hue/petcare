@@ -9,7 +9,7 @@ export const handleChat: RequestHandler = async (req, res) => {
 
     const OPENROUTER_API_KEY =
       process.env.OPENROUTER_API_KEY ||
-      "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";
+      ""; // Remove default key since it's invalid
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
