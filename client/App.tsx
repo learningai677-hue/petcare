@@ -13,6 +13,9 @@ import Profiles from "./pages/Profiles";
 import Chatbot from "./pages/Chatbot";
 import PhotoJournal from "./pages/PhotoJournal";
 import Delegate from "./pages/Delegate";
+import Medical from "./pages/Medical";
+import Training from "./pages/Training";
+import Nutrition from "./pages/Nutrition";
 
 const queryClient = new QueryClient();
 
