@@ -92,21 +92,21 @@ export default function Index() {
       {/* Features Grid */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         {/* Background Animals for Features Section */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
           <img
             src="https://images.pexels.com/photos/35638/labrador-breed-dogs-animal.jpg"
             alt="Labrador dogs in nature"
-            className="absolute top-20 right-10 w-48 h-32 object-cover opacity-8 rounded-2xl transform rotate-12"
+            className="absolute top-20 right-10 w-48 h-32 object-cover opacity-20 rounded-2xl transform rotate-12 shadow-lg"
           />
           <img
             src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
             alt="Cute kitten"
-            className="absolute bottom-20 left-10 w-40 h-60 object-cover opacity-8 rounded-2xl transform -rotate-12"
+            className="absolute bottom-20 left-10 w-40 h-60 object-cover opacity-25 rounded-2xl transform -rotate-12 shadow-lg"
           />
           <img
             src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg"
             alt="Pug portrait"
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 object-cover opacity-5 rounded-full"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 object-cover opacity-15 rounded-full shadow-lg"
           />
         </div>
 
