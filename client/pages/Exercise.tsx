@@ -6,9 +6,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState, useEffect, Suspense } from "react";
 import Layout from "@/components/Layout";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float } from "@react-three/drei";
-import * as THREE from "three";
 
 interface ExerciseSession {
   id: string;
