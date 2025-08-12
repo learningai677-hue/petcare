@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState, useEffect, Suspense } from "react";
 import Layout from "@/components/Layout";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -170,7 +171,7 @@ export default function Expenses() {
     accessories: '🦴',
     training: '🎓',
     boarding: '🏠',
-    other: '����'
+    other: '💼'
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -237,15 +238,17 @@ export default function Expenses() {
             <CardTitle className="text-center">3D Expense Breakdown</CardTitle>
           </CardHeader>
           <CardContent className="h-64">
-            <Suspense fallback={<div className="text-center py-8">Loading 3D expense visualization...</div>}>
-              <Canvas camera={{ position: [0, 3, 8], fov: 50 }}>
-                <ambientLight intensity={0.6} />
-                <directionalLight position={[5, 5, 5]} intensity={0.8} />
-                <pointLight position={[-5, 5, 5]} intensity={0.4} color="#32CD32" />
-                <MoneyVisualization expenses={expenses} />
-                <OrbitControls enableZoom={true} enablePan={false} />
-              </Canvas>
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<div className="text-center py-8">Loading 3D expense visualization...</div>}>
+                <Canvas camera={{ position: [0, 3, 8], fov: 50 }}>
+                  <ambientLight intensity={0.6} />
+                  <directionalLight position={[5, 5, 5]} intensity={0.8} />
+                  <pointLight position={[-5, 5, 5]} intensity={0.4} color="#32CD32" />
+                  <MoneyVisualization expenses={expenses} />
+                  <OrbitControls enableZoom={true} enablePan={false} />
+                </Canvas>
+              </Suspense>
+            </ErrorBoundary>
           </CardContent>
         </Card>
 
