@@ -154,8 +154,16 @@ export default function Index() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 overflow-hidden">
+        {/* Background Animals for CTA */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg"
+            alt="Happy woman with dogs"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-10"
+          />
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Give Your Pet the Best Care?
           </h2>
