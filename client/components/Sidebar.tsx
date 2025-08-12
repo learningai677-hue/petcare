@@ -15,85 +15,85 @@ const sidebarItems: SidebarItem[] = [
     icon: "🏠",
     label: "Dashboard",
     emoji: "🏠",
-    gradient: "from-blue-500 to-purple-600"
+    gradient: "from-blue-500 to-purple-600",
   },
   {
     href: "/reminders",
     icon: "🗓️",
     label: "Reminders",
     emoji: "⏰",
-    gradient: "from-emerald-500 to-cyan-600"
+    gradient: "from-emerald-500 to-cyan-600",
   },
   {
     href: "/profiles",
     icon: "🐕",
     label: "Pet Profiles",
     emoji: "🐾",
-    gradient: "from-purple-500 to-pink-600"
+    gradient: "from-purple-500 to-pink-600",
   },
   {
     href: "/medical",
     icon: "🏥",
     label: "Medical Records",
     emoji: "💊",
-    gradient: "from-red-500 to-orange-600"
+    gradient: "from-red-500 to-orange-600",
   },
   {
     href: "/training",
     icon: "🎓",
     label: "Training Log",
     emoji: "🏆",
-    gradient: "from-yellow-500 to-orange-600"
+    gradient: "from-yellow-500 to-orange-600",
   },
   {
     href: "/nutrition",
     icon: "🍽️",
     label: "Nutrition",
     emoji: "🥗",
-    gradient: "from-green-500 to-emerald-600"
+    gradient: "from-green-500 to-emerald-600",
   },
   {
     href: "/exercise",
     icon: "🏃",
     label: "Exercise",
     emoji: "⚽",
-    gradient: "from-blue-500 to-indigo-600"
+    gradient: "from-blue-500 to-indigo-600",
   },
   {
     href: "/grooming",
     icon: "✂️",
     label: "Grooming",
     emoji: "🛁",
-    gradient: "from-pink-500 to-rose-600"
+    gradient: "from-pink-500 to-rose-600",
   },
   {
     href: "/photo-journal",
     icon: "📸",
     label: "Photo Journal",
     emoji: "📷",
-    gradient: "from-yellow-500 to-amber-600"
+    gradient: "from-yellow-500 to-amber-600",
   },
   {
     href: "/expenses",
     icon: "💰",
     label: "Expenses",
     emoji: "💳",
-    gradient: "from-indigo-500 to-purple-600"
+    gradient: "from-indigo-500 to-purple-600",
   },
   {
     href: "/chatbot",
     icon: "💬",
     label: "AI Assistant",
     emoji: "🤖",
-    gradient: "from-cyan-500 to-blue-600"
+    gradient: "from-cyan-500 to-blue-600",
   },
   {
     href: "/delegate",
     icon: "🤝",
     label: "Delegate Care",
     emoji: "👥",
-    gradient: "from-rose-500 to-red-600"
-  }
+    gradient: "from-rose-500 to-red-600",
+  },
 ];
 
 export default function Sidebar() {
@@ -127,27 +127,35 @@ export default function Sidebar() {
                 "flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 group",
                 location.pathname === item.href
                   ? "bg-gradient-to-r text-white shadow-lg transform scale-105"
-                  : "hover:bg-gray-50 text-gray-700 hover:text-gray-900 hover:scale-102"
+                  : "hover:bg-gray-50 text-gray-700 hover:text-gray-900 hover:scale-102",
               )}
               style={
                 location.pathname === item.href
-                  ? { backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))` }
+                  ? {
+                      backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))`,
+                    }
                   : {}
               }
             >
-              <div className={cn(
-                "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200",
-                location.pathname === item.href
-                  ? "bg-white/20 backdrop-blur-sm"
-                  : "bg-gray-100 group-hover:bg-gray-200"
-              )}>
+              <div
+                className={cn(
+                  "w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200",
+                  location.pathname === item.href
+                    ? "bg-white/20 backdrop-blur-sm"
+                    : "bg-gray-100 group-hover:bg-gray-200",
+                )}
+              >
                 <span className="text-lg">{item.emoji}</span>
               </div>
               <div className="flex-1">
-                <p className={cn(
-                  "font-medium transition-colors",
-                  location.pathname === item.href ? "text-white" : "text-gray-900"
-                )}>
+                <p
+                  className={cn(
+                    "font-medium transition-colors",
+                    location.pathname === item.href
+                      ? "text-white"
+                      : "text-gray-900",
+                  )}
+                >
                   {item.label}
                 </p>
               </div>

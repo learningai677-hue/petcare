@@ -15,13 +15,13 @@ interface Message {
 export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: '1',
+      id: "1",
       text: "Hello! I'm your AI-powered Pet Care Assistant! 🐾\n\nI can help you with:\n• Pet health and nutrition advice\n• Training tips and behavior guidance\n• Grooming and care routines\n• Emergency pet care information\n• Breed-specific advice\n\nWhat would you like to know about your pet today?",
       isUser: false,
-      timestamp: new Date()
-    }
+      timestamp: new Date(),
+    },
   ]);
-  const [inputMessage, setInputMessage] = useState('');
+  const [inputMessage, setInputMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,67 +32,67 @@ export default function Chatbot() {
       id: Date.now().toString(),
       text: inputMessage,
       isUser: true,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     const currentMessage = inputMessage;
-    setInputMessage('');
+    setInputMessage("");
 
     // Add typing indicator
     const typingMessage: Message = {
-      id: 'typing',
-      text: '🤔 Thinking...',
+      id: "typing",
+      text: "🤔 Thinking...",
       isUser: false,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
-    setMessages(prev => [...prev, typingMessage]);
+    setMessages((prev) => [...prev, typingMessage]);
 
     try {
       // Call your backend chat endpoint
-      const response = await fetch('/api/chat', {
-        method: 'POST',
+      const response = await fetch("/api/chat", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: currentMessage })
+        body: JSON.stringify({ message: currentMessage }),
       });
 
       const data = await response.json();
 
       // Remove typing indicator and add real response
-      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
+      setMessages((prev) => prev.filter((msg) => msg.id !== "typing"));
 
       if (data.reply) {
         const botMessage: Message = {
           id: (Date.now() + 1).toString(),
           text: data.reply,
           isUser: false,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
-        setMessages(prev => [...prev, botMessage]);
+        setMessages((prev) => [...prev, botMessage]);
       } else {
         const errorMessage: Message = {
           id: (Date.now() + 1).toString(),
           text: "Sorry, I couldn't process your request. Please try again.",
           isUser: false,
-          timestamp: new Date()
+          timestamp: new Date(),
         };
-        setMessages(prev => [...prev, errorMessage]);
+        setMessages((prev) => [...prev, errorMessage]);
       }
     } catch (error) {
-      console.error('Chat error:', error);
-      
+      console.error("Chat error:", error);
+
       // Remove typing indicator and show error
-      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
-      
+      setMessages((prev) => prev.filter((msg) => msg.id !== "typing"));
+
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "Sorry, I'm having trouble connecting right now. Please check your connection and try again.",
         isUser: false,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages((prev) => [...prev, errorMessage]);
     }
   };
 
@@ -100,30 +100,30 @@ export default function Chatbot() {
     <Layout>
       {/* Background Animals */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <img 
-          src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg" 
+        <img
+          src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg"
           alt="Happy woman with dogs"
           className="absolute top-0 right-0 w-96 h-64 object-cover opacity-10 rounded-bl-3xl"
         />
-        <img 
-          src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg" 
+        <img
+          src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg"
           alt="Pug portrait"
           className="absolute bottom-0 left-72 w-72 h-72 object-cover opacity-12 rounded-tr-3xl"
         />
         <div className="animate-float">
-          <img 
-            src="https://images.pexels.com/photos/35638/labrador-breed-dogs-animal.jpg" 
+          <img
+            src="https://images.pexels.com/photos/35638/labrador-breed-dogs-animal.jpg"
             alt="Labrador dogs"
             className="absolute top-1/4 left-16 w-40 h-28 object-cover opacity-8 rounded-2xl transform rotate-12"
-            style={{ animationDelay: '2s' }}
+            style={{ animationDelay: "2s" }}
           />
         </div>
         <div className="animate-float">
-          <img 
-            src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg" 
+          <img
+            src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
             alt="Cute kitten"
             className="absolute top-1/2 right-20 w-24 h-36 object-cover opacity-15 rounded-xl transform -rotate-6"
-            style={{ animationDelay: '4s' }}
+            style={{ animationDelay: "4s" }}
           />
         </div>
       </div>
@@ -157,22 +157,26 @@ export default function Chatbot() {
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                    className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
                   >
                     <div
                       className={`max-w-[80%] p-4 rounded-lg ${
                         message.isUser
-                          ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-br-none'
-                          : message.id === 'typing'
-                          ? 'bg-blue-50 text-blue-600 rounded-bl-none border border-blue-200'
-                          : 'bg-gray-100 text-gray-800 rounded-bl-none'
+                          ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-br-none"
+                          : message.id === "typing"
+                            ? "bg-blue-50 text-blue-600 rounded-bl-none border border-blue-200"
+                            : "bg-gray-100 text-gray-800 rounded-bl-none"
                       }`}
                     >
-                      <p className={`whitespace-pre-wrap ${message.id === 'typing' ? 'animate-pulse' : ''}`}>
+                      <p
+                        className={`whitespace-pre-wrap ${message.id === "typing" ? "animate-pulse" : ""}`}
+                      >
                         {message.text}
                       </p>
-                      {message.id !== 'typing' && (
-                        <p className={`text-xs mt-2 ${message.isUser ? 'text-blue-100' : 'text-gray-500'}`}>
+                      {message.id !== "typing" && (
+                        <p
+                          className={`text-xs mt-2 ${message.isUser ? "text-blue-100" : "text-gray-500"}`}
+                        >
                           {message.timestamp.toLocaleTimeString()}
                         </p>
                       )}
@@ -192,8 +196,8 @@ export default function Chatbot() {
                   className="flex-1"
                   autoComplete="off"
                 />
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700"
                 >
                   Send
