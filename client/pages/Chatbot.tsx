@@ -23,16 +23,7 @@ export default function Chatbot() {
   ]);
   const [inputMessage, setInputMessage] = useState('');
 
-  const botResponses = [
-    "That's a great question about pet care! Regular feeding schedules are very important for your pet's health.",
-    "Remember to always provide fresh water for your pet and ensure they get enough exercise daily.",
-    "If you're concerned about your pet's behavior, it's always best to consult with a veterinarian.",
-    "Proper grooming helps keep your pet healthy and happy. Regular brushing can prevent matting and reduce shedding.",
-    "Training your pet with positive reinforcement is the most effective and humane approach.",
-    "Different pets have different dietary needs. Make sure you're feeding appropriate food for your pet's age and species."
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
 
@@ -45,18 +36,64 @@ export default function Chatbot() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentMessage = inputMessage;
     setInputMessage('');
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botMessage: Message = {
+    // Add typing indicator
+    const typingMessage: Message = {
+      id: 'typing',
+      text: '🤔 Thinking...',
+      isUser: false,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, typingMessage]);
+
+    try {
+      // Call your backend chat endpoint
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: currentMessage })
+      });
+
+      const data = await response.json();
+
+      // Remove typing indicator and add real response
+      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
+
+      if (data.reply) {
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: data.reply,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMessage]);
+      } else {
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "Sorry, I couldn't process your request. Please try again.",
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage]);
+      }
+    } catch (error) {
+      console.error('Chat error:', error);
+
+      // Remove typing indicator and show error
+      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
+
+      const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: botResponses[Math.floor(Math.random() * botResponses.length)],
+        text: "Sorry, I'm having trouble connecting right now. Please check your connection and try again.",
         isUser: false,
         timestamp: new Date()
       };
-      setMessages(prev => [...prev, botMessage]);
-    }, 1000);
+      setMessages(prev => [...prev, errorMessage]);
+    }
   };
 
   return (
