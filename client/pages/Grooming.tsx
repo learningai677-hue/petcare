@@ -101,29 +101,29 @@ function GroomingTools3D() {
 function GroomingStats3D({ totalSessions, totalCost }: { totalSessions: number; totalCost: number }) {
   return (
     <group>
-      <Center position={[-2, 0, 0]}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.3}
-          height={0.1}
-          curveSegments={12}
-        >
-          {`${totalSessions}`}
+      {/* Sessions indicator */}
+      <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.3} position={[-2, 0, 0]}>
+        <mesh>
+          <boxGeometry args={[0.8, Math.min(totalSessions / 3, 2), 0.8]} />
           <meshPhongMaterial color="#FF69B4" />
-        </Text3D>
-      </Center>
-      
-      <Center position={[2, 0, 0]}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.25}
-          height={0.1}
-          curveSegments={12}
-        >
-          {`$${totalCost}`}
+        </mesh>
+        <mesh position={[0, Math.min(totalSessions / 3, 2) / 2 + 0.3, 0]}>
+          <sphereGeometry args={[0.2]} />
+          <meshPhongMaterial color="#E91E63" />
+        </mesh>
+      </Float>
+
+      {/* Cost indicator */}
+      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.4} position={[2, 0, 0]}>
+        <mesh>
+          <boxGeometry args={[0.8, Math.min(totalCost / 50, 2), 0.8]} />
           <meshPhongMaterial color="#32CD32" />
-        </Text3D>
-      </Center>
+        </mesh>
+        <mesh position={[0, Math.min(totalCost / 50, 2) / 2 + 0.3, 0]}>
+          <sphereGeometry args={[0.2]} />
+          <meshPhongMaterial color="#228B22" />
+        </mesh>
+      </Float>
     </group>
   );
 }
