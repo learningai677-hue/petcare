@@ -29,6 +29,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/reminders" element={<Reminders />} />
           <Route path="/profiles" element={<Profiles />} />
+          <Route path="/medical" element={<Medical />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/exercise" element={<Index />} /> {/* Placeholder */}
+          <Route path="/grooming" element={<Index />} /> {/* Placeholder */}
+          <Route path="/expenses" element={<Index />} /> {/* Placeholder */}
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/photo-journal" element={<PhotoJournal />} />
           <Route path="/delegate" element={<Delegate />} />
