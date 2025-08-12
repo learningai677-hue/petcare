@@ -7,9 +7,15 @@ export const handleChat: RequestHandler = async (req, res) => {
       return res.status(400).json({ error: "No message provided" });
     }
 
-    const OPENROUTER_API_KEY =
-      process.env.OPENROUTER_API_KEY ||
-      "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";
+    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+
+    if (!OPENROUTER_API_KEY) {
+      // Provide a helpful fallback response when API key is not configured
+      return res.json({
+        reply:
+          "Hello! I'm your Pet Care Assistant 🐾\n\nI'd love to help you with pet care questions, but I need an OpenRouter API key to be configured first.\n\nTo set this up:\n1. Sign up at https://openrouter.ai\n2. Get your free API key\n3. Set the OPENROUTER_API_KEY environment variable\n\nIn the meantime, here are some general pet care tips:\n• Ensure fresh water is always available\n• Feed age-appropriate, high-quality food\n• Regular vet checkups are essential\n• Daily exercise keeps pets healthy and happy\n• Show lots of love and attention! ❤️",
+      });
+    }
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -22,7 +28,7 @@ export const handleChat: RequestHandler = async (req, res) => {
           "X-Title": "Pet Care Assistant",
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "deepseek/deepseek-chat",
           messages: [
             {
               role: "system",
@@ -41,14 +47,18 @@ export const handleChat: RequestHandler = async (req, res) => {
     );
 
     if (!response.ok) {
-      const errText = await response.text();
-      console.error("OpenRouter API error:", errText);
-      return res
-        .status(500)
-        .json({
-          error: "Failed to get response from AI service",
-          details: errText,
-        });
+      let errorDetails = `HTTP ${response.status}: ${response.statusText}`;
+      try {
+        const errText = await response.text();
+        console.error("OpenRouter API error:", errText);
+        errorDetails = errText;
+      } catch (readError) {
+        console.error("Could not read error response:", readError);
+      }
+      return res.status(500).json({
+        error: "Failed to get response from AI service",
+        details: errorDetails,
+      });
     }
 
     const data = await response.json();
