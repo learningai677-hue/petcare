@@ -16,6 +16,9 @@ import Delegate from "./pages/Delegate";
 import Medical from "./pages/Medical";
 import Training from "./pages/Training";
 import Nutrition from "./pages/Nutrition";
+import Exercise from "./pages/Exercise";
+import Grooming from "./pages/Grooming";
+import Expenses from "./pages/Expenses";
 
 const queryClient = new QueryClient();
 
