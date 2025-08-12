@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState, useEffect, Suspense } from "react";
 import Layout from "@/components/Layout";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text3D, Center, Float, Sphere } from "@react-three/drei";
+import { OrbitControls, Float, Sphere } from "@react-three/drei";
 import * as THREE from "three";
 
 interface GroomingSession {
