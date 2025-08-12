@@ -56,7 +56,7 @@ export default function Reminders() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <Layout>
       {/* Background Animals */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <img 
@@ -67,7 +67,7 @@ export default function Reminders() {
         <img 
           src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg" 
           alt="Golden retriever"
-          className="absolute bottom-0 left-0 w-80 h-80 object-cover opacity-8 rounded-tr-3xl"
+          className="absolute bottom-0 left-72 w-80 h-80 object-cover opacity-8 rounded-tr-3xl"
         />
         <div className="animate-float">
           <img 
@@ -79,21 +79,18 @@ export default function Reminders() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <Link to="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors">
-            ← Back to Home
-          </Link>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            🗓️ Pet Care Assistant
+      <div className="relative z-10 p-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            🗓️ Reminders
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-gray-600 text-lg">
             Set and manage feeding, walking, and vet visit reminders for your pets
           </p>
         </div>
 
         {/* Add Reminder Form */}
-        <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl mb-8 max-w-2xl mx-auto">
+        <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl mb-8 max-w-4xl">
           <CardHeader>
             <CardTitle className="text-center text-2xl">Add New Reminder</CardTitle>
           </CardHeader>
@@ -184,6 +181,6 @@ export default function Reminders() {
           </Card>
         )}
       </div>
-    </div>
+    </Layout>
   );
 }
