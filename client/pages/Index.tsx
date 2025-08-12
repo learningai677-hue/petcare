@@ -45,7 +45,20 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10" />
+        {/* Background Animals */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/7210486/pexels-photo-7210486.jpeg"
+            alt="Happy pets playing"
+            className="absolute top-0 right-0 w-80 h-60 object-cover opacity-15 rounded-bl-3xl"
+          />
+          <img
+            src="https://images.pexels.com/photos/31246311/pexels-photo-31246311.jpeg"
+            alt="Golden retriever"
+            className="absolute bottom-0 left-0 w-64 h-64 object-cover opacity-10 rounded-tr-3xl"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
           <div className="text-center">
             <div className="flex justify-center mb-6">
