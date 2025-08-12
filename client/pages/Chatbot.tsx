@@ -82,10 +82,10 @@ export default function Chatbot() {
       }
     } catch (error) {
       console.error('Chat error:', error);
-
+      
       // Remove typing indicator and show error
       setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
-
+      
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "Sorry, I'm having trouble connecting right now. Please check your connection and try again.",
@@ -97,7 +97,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50">
+    <Layout>
       {/* Background Animals */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <img 
@@ -108,7 +108,7 @@ export default function Chatbot() {
         <img 
           src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg" 
           alt="Pug portrait"
-          className="absolute bottom-0 left-0 w-72 h-72 object-cover opacity-12 rounded-tr-3xl"
+          className="absolute bottom-0 left-72 w-72 h-72 object-cover opacity-12 rounded-tr-3xl"
         />
         <div className="animate-float">
           <img 
@@ -128,15 +128,12 @@ export default function Chatbot() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 h-screen flex flex-col">
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors">
-            ← Back to Home
-          </Link>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-            💬 Pet Care Chatbot
+      <div className="relative z-10 p-8 h-screen flex flex-col">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            💬 AI Assistant
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-gray-600 text-lg">
             Get instant answers to your pet care questions anytime, anywhere
           </p>
         </div>
@@ -206,6 +203,6 @@ export default function Chatbot() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </Layout>
   );
 }
