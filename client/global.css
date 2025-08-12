@@ -39,6 +39,14 @@
 
     --radius: 0.5rem;
 
+    /* Pet care theme colors */
+    --pet-blue: 59 130 246;
+    --pet-purple: 139 92 246;
+    --pet-emerald: 16 185 129;
+    --pet-orange: 245 158 11;
+    --pet-rose: 244 63 94;
+    --pet-cyan: 6 182 212;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
