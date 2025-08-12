@@ -25,8 +25,7 @@ interface ExerciseSession {
 function AnimatedDog() {
   return (
     <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
-      <Center>
-        <group>
+      <group>
           {/* Dog Body */}
           <mesh position={[0, 0, 0]} rotation={[0, 0, 0]}>
             <cylinderGeometry args={[0.3, 0.4, 1]} />
@@ -72,8 +71,7 @@ function AnimatedDog() {
             <cylinderGeometry args={[0.05, 0.1, 0.4]} />
             <meshPhongMaterial color="#654321" />
           </mesh>
-        </group>
-      </Center>
+      </group>
     </Float>
   );
 }
