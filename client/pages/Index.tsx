@@ -90,8 +90,27 @@ export default function Index() {
       </div>
 
       {/* Features Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="text-center mb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        {/* Background Animals for Features Section */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img
+            src="https://images.pexels.com/photos/35638/labrador-breed-dogs-animal.jpg"
+            alt="Labrador dogs in nature"
+            className="absolute top-20 right-10 w-48 h-32 object-cover opacity-8 rounded-2xl transform rotate-12"
+          />
+          <img
+            src="https://images.pexels.com/photos/33332961/pexels-photo-33332961.jpeg"
+            alt="Cute kitten"
+            className="absolute bottom-20 left-10 w-40 h-60 object-cover opacity-8 rounded-2xl transform -rotate-12"
+          />
+          <img
+            src="https://images.pexels.com/photos/29217040/pexels-photo-29217040.jpeg"
+            alt="Pug portrait"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 object-cover opacity-5 rounded-full"
+          />
+        </div>
+
+        <div className="relative text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Everything Your Pet Needs
           </h2>
