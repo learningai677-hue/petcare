@@ -41,11 +41,17 @@ export const handleChat: RequestHandler = async (req, res) => {
     );
 
     if (!response.ok) {
-      const errText = await response.text();
-      console.error("OpenRouter API error:", errText);
+      let errorDetails = `HTTP ${response.status}: ${response.statusText}`;
+      try {
+        const errText = await response.text();
+        console.error("OpenRouter API error:", errText);
+        errorDetails = errText;
+      } catch (readError) {
+        console.error("Could not read error response:", readError);
+      }
       return res.status(500).json({
         error: "Failed to get response from AI service",
-        details: errText,
+        details: errorDetails,
       });
     }
 
