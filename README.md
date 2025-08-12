@@ -5,12 +5,14 @@ A comprehensive pet care management application that helps pet owners track, man
 ## 🌟 Features
 
 ### 📊 Dashboard
+
 - Overview of all pets and their activities
 - Quick stats on active pets, upcoming reminders, monthly expenses, and training sessions
 - Recent activities timeline
 - Beautiful gradient UI with pet-themed background images
 
 ### 🐾 Pet Management
+
 - **Pet Profiles**: Create and manage detailed profiles for each pet
 - **Medical Records**: Track vaccinations, medications, vet visits, and health history
 - **Training Log**: Record training sessions and progress
@@ -19,6 +21,7 @@ A comprehensive pet care management application that helps pet owners track, man
 - **Grooming**: Schedule and track grooming appointments and care routines
 
 ### 📱 Smart Features
+
 - **Reminders**: Set up automated reminders for feeding, medications, vet appointments, and more
 - **Photo Journal**: Capture and organize memorable moments with your pets
 - **Expense Tracking**: Monitor pet-related expenses and budgets
@@ -28,6 +31,7 @@ A comprehensive pet care management application that helps pet owners track, man
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **React 18** with TypeScript
 - **Vite** for fast development and building
 - **Tailwind CSS** for modern, responsive styling
@@ -39,16 +43,19 @@ A comprehensive pet care management application that helps pet owners track, man
 - **Recharts** for data visualization
 
 ### Backend
+
 - **Node.js** with Express server
 - **TypeScript** for type safety
 - **CORS** for cross-origin resource sharing
 - **Dotenv** for environment variable management
 
 ### AI Integration
+
 - **OpenRouter API** with DeepSeek model for intelligent chatbot responses
 - Free tier model with no credit limitations
 
 ### Development Tools
+
 - **SWC** for fast compilation
 - **Vitest** for testing
 - **Prettier** for code formatting
@@ -58,29 +65,34 @@ A comprehensive pet care management application that helps pet owners track, man
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm, yarn, or pnpm package manager
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd pet-care
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
    Create a `.env` file in the root directory:
+
    ```env
    OPENROUTER_API_KEY=your_openrouter_api_key_here
    ```
 
 4. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -89,6 +101,7 @@ A comprehensive pet care management application that helps pet owners track, man
    Navigate to `http://localhost:8080`
 
 ### Getting OpenRouter API Key
+
 1. Sign up at [OpenRouter.ai](https://openrouter.ai)
 2. Get your free API key from the dashboard
 3. Add it to your environment variables
@@ -150,6 +163,7 @@ pet-care/
 The application can be deployed to various platforms:
 
 ### Netlify
+
 1. Connect your repository to Netlify
 2. Set the build command: `npm run build`
 3. Set the publish directory: `dist/spa`
@@ -157,12 +171,14 @@ The application can be deployed to various platforms:
 5. Deploy!
 
 ### Vercel
+
 1. Import your repository to Vercel
 2. Configure build settings (auto-detected)
 3. Add environment variables
 4. Deploy!
 
 ### Other Platforms
+
 The application builds to static files and can be deployed to any static hosting service.
 
 ## 🤝 Contributing
