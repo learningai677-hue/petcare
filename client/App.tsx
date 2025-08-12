@@ -49,8 +49,12 @@ const App = () => (
   </QueryClientProvider>
 );
 
-// Ensure root is only created once
-const rootElement = document.getElementById("root")!;
+// Ensure root is only created once and handle HMR properly
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
+
 let root = (rootElement as any).__reactRoot;
 
 if (!root) {
@@ -58,4 +62,16 @@ if (!root) {
   (rootElement as any).__reactRoot = root;
 }
 
-root.render(<App />);
+// Render the app
+try {
+  root.render(<App />);
+} catch (error) {
+  console.error("Error rendering app:", error);
+}
+
+// HMR cleanup
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => {
+    // No cleanup needed for createRoot approach
+  });
+}
