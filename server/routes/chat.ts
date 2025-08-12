@@ -8,8 +8,13 @@ export const handleChat: RequestHandler = async (req, res) => {
     }
 
     const OPENROUTER_API_KEY =
-      process.env.OPENROUTER_API_KEY ||
-      ""; // Remove default key since it's invalid
+      process.env.OPENROUTER_API_KEY;
+
+    if (!OPENROUTER_API_KEY) {
+      return res.status(500).json({
+        error: "OpenRouter API key not configured. Please set OPENROUTER_API_KEY environment variable.",
+      });
+    }
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
