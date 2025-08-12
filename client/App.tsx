@@ -35,9 +35,9 @@ const App = () => (
           <Route path="/medical" element={<Medical />} />
           <Route path="/training" element={<Training />} />
           <Route path="/nutrition" element={<Nutrition />} />
-          <Route path="/exercise" element={<Index />} /> {/* Placeholder */}
-          <Route path="/grooming" element={<Index />} /> {/* Placeholder */}
-          <Route path="/expenses" element={<Index />} /> {/* Placeholder */}
+          <Route path="/exercise" element={<Exercise />} />
+          <Route path="/grooming" element={<Grooming />} />
+          <Route path="/expenses" element={<Expenses />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/photo-journal" element={<PhotoJournal />} />
           <Route path="/delegate" element={<Delegate />} />
