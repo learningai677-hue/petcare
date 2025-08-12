@@ -20,7 +20,19 @@ import Exercise from "./pages/Exercise";
 import Grooming from "./pages/Grooming";
 import Expenses from "./pages/Expenses";
 
-const queryClient = new QueryClient();
+// Create QueryClient as singleton to prevent re-creation on HMR
+let queryClient = (globalThis as any).__queryClient;
+if (!queryClient) {
+  queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: 1,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
+  (globalThis as any).__queryClient = queryClient;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
