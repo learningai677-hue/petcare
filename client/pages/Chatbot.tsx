@@ -166,13 +166,19 @@ export default function Chatbot() {
                       className={`max-w-[80%] p-4 rounded-lg ${
                         message.isUser
                           ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-br-none'
+                          : message.id === 'typing'
+                          ? 'bg-blue-50 text-blue-600 rounded-bl-none border border-blue-200'
                           : 'bg-gray-100 text-gray-800 rounded-bl-none'
                       }`}
                     >
-                      <p className="whitespace-pre-wrap">{message.text}</p>
-                      <p className={`text-xs mt-2 ${message.isUser ? 'text-blue-100' : 'text-gray-500'}`}>
-                        {message.timestamp.toLocaleTimeString()}
+                      <p className={`whitespace-pre-wrap ${message.id === 'typing' ? 'animate-pulse' : ''}`}>
+                        {message.text}
                       </p>
+                      {message.id !== 'typing' && (
+                        <p className={`text-xs mt-2 ${message.isUser ? 'text-blue-100' : 'text-gray-500'}`}>
+                          {message.timestamp.toLocaleTimeString()}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
