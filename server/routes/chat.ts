@@ -22,7 +22,7 @@ export const handleChat: RequestHandler = async (req, res) => {
           "X-Title": "Pet Care Assistant",
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "deepseek/deepseek-chat",
           messages: [
             {
               role: "system",
