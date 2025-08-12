@@ -16,7 +16,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello! I'm your Pet Care Assistant. Ask me anything about taking care of your furry friends! 🐾",
+      text: "Hello! I'm your AI-powered Pet Care Assistant! 🐾\n\nI can help you with:\n• Pet health and nutrition advice\n• Training tips and behavior guidance\n• Grooming and care routines\n• Emergency pet care information\n• Breed-specific advice\n\nWhat would you like to know about your pet today?",
       isUser: false,
       timestamp: new Date()
     }
